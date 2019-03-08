@@ -1,12 +1,23 @@
 {
   "name": "star-wars-generations",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "description": "A persistant multiplayer online browser game in the Star Wars universe",
+  "author": "Brian Kennedy <bpkennedy@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bpkennedy/star-wars-generations"
+  },
+  "homepage": "https://github.com/bpkennedy/star-wars-generations#readme",
+  "engines": {
+    "node": "10.0.0"
+  },
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "test:e2e": "vue-cli-service test:e2e"
+    "test:e2e": "vue-cli-service test:e2e",
+    "test:e2e:ci": "vue-cli-service test:e2e --headless"
   },
   "dependencies": {
     "vue": "^2.6.6",
@@ -20,6 +31,7 @@
     "@vue/cli-service": "^3.5.0",
     "@vue/eslint-config-standard": "^4.0.0",
     "babel-eslint": "^10.0.1",
+    "connect-history-api-fallback": "^1.6.0",
     "eslint": "^5.8.0",
     "eslint-plugin-vue": "^5.0.0",
     "node-sass": "^4.9.0",
