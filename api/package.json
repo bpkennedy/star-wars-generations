@@ -1,0 +1,35 @@
+{
+  "name": "star-wars-generations-api",
+  "version": "0.1.0",
+  "description": "API for the Star Wars Generations game",
+  "private": false,
+  "author": "Brian Kennedy <bpkennedy@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bpkennedy/star-wars-generations"
+  },
+  "homepage": "https://github.com/bpkennedy/star-wars-generations#readme",
+  "engines": {
+    "node": "10.0.0"
+  },
+  "scripts": {
+    "serve": "nodemon --exec babel-node ./src/server.js",
+    "test": "mocha --require @babel/register -w --recursive",
+    "test:ci": "mocha --require @babel/register --exit"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.2.5",
+    "hapi": "^18.1.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.3.4",
+    "@babel/node": "^7.2.2",
+    "@babel/preset-env": "^7.3.4",
+    "@babel/register": "^7.0.0",
+    "chai": "^4.2.0",
+    "inject-then": "^2.0.9",
+    "mocha": "^6.0.2",
+    "nodemon": "^1.18.10"
+  }
+}
