@@ -17,6 +17,7 @@
     "build:api": "cd api && npm install && cd ..",
     "test:client": "npm run build:client && cd client && npm run test:e2e:ci && cd ..",
     "test:api": "npm run build:api && cd api && npm run test:ci && cd ..",
-    "serve": "cd api && npm run serve"
+    "serve:api": "cd api && npm run serve",
+    "start": "npm run build:client && npm run build:api && npm run serve:api"
   }
 }
