@@ -1,8 +1,9 @@
 import Hapi from 'hapi'
 
+// checking for if in Heroku environment, as it cannot bind host to 'localhost'
 const server = Hapi.server({
   port: process.env.PORT || 3000,
-  host: 'localhost'
+  host: process.env.PORT ? '0.0.0.0' : 'localhost'
 })
 
 server.route({
