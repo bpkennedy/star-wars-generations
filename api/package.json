@@ -18,18 +18,18 @@
     "test:ci": "mocha --require @babel/register --exit"
   },
   "dependencies": {
-    "@babel/polyfill": "^7.2.5",
-    "hapi": "^18.1.0"
-  },
-  "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.3.4",
     "@babel/node": "^7.2.2",
+    "@babel/polyfill": "^7.2.5",
     "@babel/preset-env": "^7.3.4",
     "@babel/register": "^7.0.0",
+    "hapi": "^18.1.0",
+    "nodemon": "^1.18.10"
+  },
+  "devDependencies": {
     "chai": "^4.2.0",
     "inject-then": "^2.0.9",
-    "mocha": "^6.0.2",
-    "nodemon": "^1.18.10"
+    "mocha": "^6.0.2"
   }
 }
