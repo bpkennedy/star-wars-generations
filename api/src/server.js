@@ -1,9 +1,13 @@
 import Hapi from 'hapi'
+import { initDatabase } from './database'
+initDatabase((db) => {
+  console.log('in final callback')
+  console.log(db)
+})
 
-// checking for if in Heroku environment, as it cannot bind host to 'localhost'
 const server = Hapi.server({
-  port: process.env.PORT || 3000,
-  host: process.env.PORT ? '0.0.0.0' : 'localhost'
+  port: 3000,
+  host: '0.0.0.0'
 })
 
 server.route({
