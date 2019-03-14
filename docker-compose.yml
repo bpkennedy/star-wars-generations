@@ -1,8 +1,8 @@
 version: "3"
-
 services:
   client:
-    build: ./client
+    build: './client'
+    container_name: client
     ports:
       - 8080:8080
     volumes:
@@ -10,8 +10,9 @@ services:
     environment:
       - API_URL=http://localhost:3000/
 
-  server:
-    build: ./api
+  api:
+    build: './api'
+    container_name: api
     volumes:
       - ./api:/data2
     environment:
@@ -20,15 +21,15 @@ services:
     ports:
       - 3000:3000
     depends_on:
-      - database
+      - db
       - client
-    command: nodemon --exec babel-node ./src/server.js
-
-  database:
-    image: postgres:11.1-alpine
+  db:
+    build: './db'
+    container_name: db
+    restart: always
     ports:
       - 5432:5432
     environment:
       POSTGRES_PASSWORD: postgres
       POSTGRES_USER: postgres
-      POSTGRES_DB: swg_db
+      POSTGRES_DB: swg
