@@ -1,41 +1,61 @@
 import Hapi from 'hapi'
-import { initDatabase } from './database'
-initDatabase((db) => {
-  console.log('in final callback')
-  console.log(db)
-})
+import * as log from 'loglevel'
+import * as routes from './routes'
+import * as Inert from 'inert'
+import * as Vision from 'vision'
+import * as HapiSwagger from 'hapi-swagger'
+import * as db from './database'
 
-const server = Hapi.server({
-  port: 3000,
-  host: '0.0.0.0'
-})
+let server
 
-server.route({
-  method: 'GET',
-  path: '/',
-  handler: (request, h) => {
-    return 'Hello, world!'
+export async function start(includeSwagger = true, port = 3000) {
+  await db.setup()
+
+  server = new Hapi.Server({
+    port,
+    host: '0.0.0.0',
+  })
+
+  await routes.addRoutes(server)
+
+  server.events.on({
+    name: 'request',
+    channels: 'internal'
+  }, (request, event, tags) => {
+
+    console.error(event)
+    if (tags.error && tags.state) {
+      console.error(event)
+    }
+  })
+
+  const swaggerOptions = {
+    info: {
+      title: 'Star Wars Generations API Documentation',
+      version: '1.0',
+    },
   }
-})
 
-server.route({
-  method: 'GET',
-  path: '/{name}',
-  handler: (request, h) => {
-    return 'Hello, ' + encodeURIComponent(request.params.name) + '!'
+  const plugins = [
+    Inert,
+    Vision,
+    {
+      plugin: HapiSwagger,
+      options: swaggerOptions,
+    },
+  ]
+
+  if (includeSwagger) {
+    await server.register(plugins)
   }
-})
 
-const init = async () => {
-  await server.start();
-  console.log(`Server running at: ${server.info.uri}`)
+  await server.start()
+  log.info(`Server running at: ${server.info.uri}`)
 }
 
-process.on('unhandledRejection', (err) => {
-  console.log(err)
-  process.exit(1)
-})
-
-init()
-
-module.exports = server;
+export async function stop() {
+  await db.shutdown()
+  return await server.stop({
+    timeout: 5000
+  })
+}
