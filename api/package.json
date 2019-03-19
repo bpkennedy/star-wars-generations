@@ -29,6 +29,7 @@
     "inert": "^5.1.2",
     "joi": "^14.3.1",
     "knex": "^0.14.6",
+    "knex-migrate": "^1.7.1",
     "loglevel": "^1.6.1",
     "nodemon": "^1.18.10",
     "objection": "^1.6.3",
