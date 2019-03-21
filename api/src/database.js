@@ -1,15 +1,16 @@
 import * as log from 'loglevel'
-import knexMigrate from 'knex-migrate'
+import knex from 'knex'
 import { Model } from 'objection'
 import { Ship } from './dao/ship-dao'
-let knex
+
+let pg
 
 const dataModels = [
   Ship
 ]
 
 export async function setup(host = 'db', port = 5432) {
-  knex = require('knex')({
+  pg = knex({
     client: 'pg',
     version: '9.0',
     connection: {
@@ -24,12 +25,12 @@ export async function setup(host = 'db', port = 5432) {
       max: 80
     }
   })
-  Model.knex(knex)
-  await knexMigrate('up', {}, log.error)
+  // Model.knex(knex)
+  pg.migrate.latest();
 }
 
 export async function shutdown() {
-  knex.destroy()
+  pg.destroy()
 }
 
 export async function removeExistingData() {

@@ -7,7 +7,8 @@ services:
     stdin_open: true
     tty: true
     volumes:
-      - ./api:/data2
+      - ./api:/api
+    working_dir: /api
     environment:
       NODE_ENV: test
       PORT: 3000

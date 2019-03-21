@@ -8,7 +8,7 @@ const config = {
       password: 'swgapi',
 	    database: 'swgdb',
 	},
-	pool: {min: 2, max: 80},
+	pool: {min: 1, max: 1},
 }
 
 const config_test = {
@@ -17,8 +17,8 @@ const config_test = {
 	connection: {
 	    host: 'db',
 	    port: 5432,
-	    user: 'swgapi_test',
-      password: 'swgapi_test',
+	    user: 'swg_api',
+      password: 'swgapi',
 	    database: 'swgdb_test',
 	},
 	pool: {min: 2, max: 80},

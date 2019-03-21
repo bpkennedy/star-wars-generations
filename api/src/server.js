@@ -6,15 +6,13 @@ import * as Vision from 'vision'
 import * as HapiSwagger from 'hapi-swagger'
 import * as db from './database'
 
-let server
+let server = new Hapi.Server({
+  port: 3000,
+  host: '0.0.0.0',
+})
 
-export async function start(includeSwagger = true, port = 3000) {
+async function start(includeSwagger = true) {
   await db.setup()
-
-  server = new Hapi.Server({
-    port,
-    host: '0.0.0.0',
-  })
 
   await routes.addRoutes(server)
 
@@ -53,9 +51,12 @@ export async function start(includeSwagger = true, port = 3000) {
   log.info(`Server running at: ${server.info.uri}`)
 }
 
-export async function stop() {
+async function stop() {
   await db.shutdown()
-  return await server.stop({
-    timeout: 5000
-  })
+}
+
+module.exports = {
+  server,
+  start,
+  stop
 }
