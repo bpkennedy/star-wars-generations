@@ -1,7 +1,7 @@
 import * as log from 'loglevel'
-import {
-  shipGetHandler
-} from './api/ships-api'
+import { shipGetHandler } from './api/ships-api'
+import { moduleGetHandler } from './api/modules-api'
+import { playerGetHandler } from './api/players-api'
 
 const basePath = '/api/1.0'
 
@@ -16,9 +16,33 @@ const shipListGetRoute = {
   },
 }
 
+const moduleListGetRoute = {
+  method: 'GET',
+  path: basePath + '/modules',
+  config: {
+    handler: moduleGetHandler,
+    description: 'Get list of modules',
+    tags: ['api'],
+    validate: {},
+  },
+}
+
+const playerListGetRoute = {
+  method: 'GET',
+  path: basePath + '/players',
+  config: {
+    handler: playerGetHandler,
+    description: 'Get list of players',
+    tags: ['api'],
+    validate: {},
+  },
+}
+
 export async function addRoutes(server) {
   const routes = [
     shipListGetRoute,
+    moduleListGetRoute,
+    playerListGetRoute,
   ]
 
   for (const route of routes) {

@@ -9,7 +9,22 @@ services:
       - ./client:/data
     environment:
       - API_URL=http://localhost:3000/
-
+  tests:
+    build: './api'
+    container_name: api_tests
+    stop_signal: SIGKILL
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./api:/data2
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+    ports:
+      - 3000:3000
+    depends_on:
+      - db
+    command: npm run test
   api:
     build: './api'
     container_name: api

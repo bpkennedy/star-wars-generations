@@ -24,6 +24,7 @@
     "@babel/polyfill": "^7.2.5",
     "@babel/preset-env": "^7.3.4",
     "@babel/register": "^7.0.0",
+    "axios": "^0.18.0",
     "hapi": "^18.1.0",
     "hapi-swagger": "^9.4.1",
     "inert": "^5.1.2",

@@ -1,0 +1,28 @@
+version: "3"
+services:
+  tests:
+    build: './api'
+    container_name: api_tests
+    stop_signal: SIGKILL
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./api:/data2
+    environment:
+      NODE_ENV: test
+      PORT: 3000
+    ports:
+      - 3000:3000
+    depends_on:
+      - db_tests
+    command: npm run test
+  db_tests:
+    build: './db'
+    container_name: db_tests
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: swgdb_test
