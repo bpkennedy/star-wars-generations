@@ -1,15 +1,9 @@
 language: node_js
-node_js:
-  - "10"
-jobs:  
-  include:
-    - stage: "Builds"
-      name: "Build API"
-      script: "npm run build:api"
-    - script: "npm run build:client"
-      name: "Build Client"
-    - stage: "Tests"
-      name: "API Unit Tests"
-      script: npm run test:api
-    - script: npm run test:client
-      name: "Client E2E Tests"
+services:
+  - docker
+install:
+  - docker-compose -f docker-compose.test.yml build
+script:
+  - docker-compose -f docker-compose.test.yml up
+after_script:
+  - docker-compose -f docker-compose.test.yml down
