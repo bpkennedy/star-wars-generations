@@ -19,7 +19,7 @@ describe('Server startup', function () {
   
   it('should find 1 ship from the initial migration', async function () {
     const response = await axios.get('http://localhost:3000/api/1.0/ships')
-    assert.deepEqual(response.status, 404)
+    assert.deepEqual(response.status, 200)
     assert.deepEqual(response.data[0].name, 'Z-95 Headhunter')
   })
   
