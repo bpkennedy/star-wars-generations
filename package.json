@@ -1,6 +1,6 @@
 {
   "name": "star-wars-generations",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": false,
   "description": "A persistant multiplayer online browser game in the Star Wars universe",
   "author": "Brian Kennedy <bpkennedy@gmail.com>",

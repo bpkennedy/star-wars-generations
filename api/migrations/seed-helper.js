@@ -1,3 +1,5 @@
+import VError from 'verror'
+
 const seedModules = [{
     id: '2345',
     name: '9771 deflector',
@@ -207,8 +209,7 @@ module.exports = {
       }
 
     } catch (error) {
-      console.error('database seeding error:', error)
-      throw error
+      throw new VError(error, 'Error seeding database')
     }
   }
 }

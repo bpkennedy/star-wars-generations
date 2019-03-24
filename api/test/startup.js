@@ -1,21 +1,26 @@
 import { assert } from 'chai'
-import server from '../src/server.js'
+import axios from 'axios'
+import { start, stop } from '../src/server.js'
 
 describe('Server startup', function () {
   
-  after(function () {
-    server.stop({timeout: 6000});
+  beforeEach(async function () {
+    await start(true)
   })
   
-  it('should validate if server is running', function () {
-    return server.inject({
-        method: 'GET',
-        url: '/'
-      })
-      .then(
-        function (response) {
-          assert.deepEqual(response.statusCode, 200);
-        }
-      )
+  afterEach(async function () {
+    await stop({timeout: 6000});
   })
+  
+  it('should validate server can run - no value, delete later', async function () {
+    const response = await axios.get('http://localhost:3000/documentation')
+    assert.deepEqual(response.status, 200)
+  })
+  
+  it('should find 1 ship from the initial migration', async function () {
+    const response = await axios.get('http://localhost:3000/api/1.0/ships')
+    assert.deepEqual(response.status, 200)
+    assert.deepEqual(response.data[0].name, 'Z-95 Headhunter')
+  })
+  
 })

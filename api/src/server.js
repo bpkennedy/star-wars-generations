@@ -1,5 +1,6 @@
 import Hapi from 'hapi'
 import * as log from 'loglevel'
+import VError from 'verror'
 import * as routes from './routes'
 import * as Inert from 'inert'
 import * as Vision from 'vision'
@@ -9,7 +10,11 @@ import * as db from './database'
 let server
 
 export async function start(includeSwagger = true, port = 3000) {
-  await db.setup()
+  try {
+    await db.setup()
+  } catch(error) {
+    throw new VError(error, 'Error setting up database')
+  }
 
   server = new Hapi.Server({
     port,
@@ -22,7 +27,6 @@ export async function start(includeSwagger = true, port = 3000) {
     name: 'request',
     channels: 'internal'
   }, (request, event, tags) => {
-
     console.error(event)
     if (tags.error && tags.state) {
       console.error(event)
@@ -54,7 +58,11 @@ export async function start(includeSwagger = true, port = 3000) {
 }
 
 export async function stop() {
-  await db.shutdown()
+  try {
+    await db.shutdown() 
+  } catch(error) {
+    throw new VError(error, 'Error shutting down the server')
+  }
   return await server.stop({
     timeout: 5000
   })

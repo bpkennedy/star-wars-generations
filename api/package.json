@@ -1,6 +1,6 @@
 {
   "name": "star-wars-generations-api",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "API for the Star Wars Generations game",
   "private": false,
   "author": "Brian Kennedy <bpkennedy@gmail.com>",
@@ -24,6 +24,7 @@
     "@babel/polyfill": "^7.2.5",
     "@babel/preset-env": "^7.3.4",
     "@babel/register": "^7.0.0",
+    "axios": "^0.18.0",
     "hapi": "^18.1.0",
     "hapi-swagger": "^9.4.1",
     "inert": "^5.1.2",
@@ -35,6 +36,7 @@
     "objection": "^1.6.3",
     "pg": "^7.8.2",
     "pg-hstore": "^2.3.2",
+    "verror": "^1.10.0",
     "vision": "^5.4.4"
   },
   "devDependencies": {
