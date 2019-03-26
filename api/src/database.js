@@ -24,7 +24,7 @@ export async function setup(host = 'db', port = 5432) {
     pool: {
       min: 2,
       max: 80
-    }
+    },
   })
   Model.knex(knex)
   try {
@@ -35,7 +35,7 @@ export async function setup(host = 'db', port = 5432) {
 }
 
 export async function shutdown() {
-  knex.destroy()
+  return await knex.destroy()
 }
 
 export async function removeExistingData() {

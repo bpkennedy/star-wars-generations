@@ -14,7 +14,7 @@
   },
   "scripts": {
     "serve": "nodemon --exec babel-node ./src/index.js",
-    "test": "mocha --require @babel/register -w --recursive",
+    "test": "NODE_ENV=development mocha --require @babel/register -w --recursive",
     "test:ci": "mocha --require @babel/register --exit"
   },
   "dependencies": {

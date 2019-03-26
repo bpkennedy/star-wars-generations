@@ -11,7 +11,11 @@ let server
 
 export async function start(includeSwagger = true, port = 3000) {
   try {
-    await db.setup()
+    if (port === 3000) {
+      await db.setup() 
+    } else {
+      await db.setup('localhost')
+    }
   } catch(error) {
     throw new VError(error, 'Error setting up database')
   }
