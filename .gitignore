@@ -1,6 +1,7 @@
 .DS_Store
 node_modules
 client/dist
+db-data/
 
 client/tests/e2e/videos/
 client/tests/e2e/screenshots/

@@ -32,7 +32,9 @@ services:
     container_name: db
     restart: always
     networks:
-      - database 
+      - database
+    volumes:
+      - ./db-data:/var/lib/postgresql/data
     ports:
       - 5432:5432
     environment:
