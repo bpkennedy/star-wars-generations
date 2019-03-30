@@ -1,9 +1,13 @@
 language: node_js
 services:
   - docker
-script:
-  - chmod +x ./scripts/test.sh
-  - ./scripts/test.sh
+
+jobs:
+  include:
+    - stage: test
+      script:
+      - chmod +x ./scripts/test.sh
+      - ./scripts/test.sh
 after_success:
   - wget https://raw.githubusercontent.com/DiscordHooks/travis-ci-discord-webhook/master/send.sh
   - chmod +x send.sh
