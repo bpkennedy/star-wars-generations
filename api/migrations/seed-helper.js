@@ -160,6 +160,13 @@ const seedShips = [{
   height: 18.12,
 }]
 
+const seedUsers = [{
+  id: '12345',
+  username: 'bpkennedy@gmail.com',
+  password: 'pass123!',
+  admin: true,
+}]
+
 module.exports = {
   seedDatabaseData: async knex => {
     try {
@@ -177,6 +184,8 @@ module.exports = {
             base_range: module.base_range,
             base_shield_strength: module.base_shield_strength,
             base_space_speed: module.base_space_speed,
+            created_at: new Date().toISOString(),
+            updated_at: new Date().toISOString(),
           })
           .returning('id')
       }
@@ -189,7 +198,9 @@ module.exports = {
           crew: ship.crew,
           length: ship.length,
           width: ship.width,
-          height: ship.height
+          height: ship.height,
+          created_at: new Date().toISOString(),
+          updated_at: new Date().toISOString(),
         })
         .returning('id')
       }
@@ -203,7 +214,20 @@ module.exports = {
           profile_image_url: player.profile_image_url,
           hp: player.hp,
           xp: player.xp,
-          level: player.level
+          level: player.level,
+          created_at: new Date().toISOString(),
+          updated_at: new Date().toISOString(),
+        })
+        .returning('id')
+      }
+      
+      for (const user of seedUsers) {
+        await knex('users').insert({
+          username: user.username,
+          password: user.password,
+          admin: user.admin,
+          created_at: new Date().toISOString(),
+          updated_at: new Date().toISOString(),
         })
         .returning('id')
       }

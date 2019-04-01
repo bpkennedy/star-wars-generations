@@ -1,7 +1,13 @@
 import * as log from 'loglevel'
+import Joi from 'joi'
+
 import {
   shipGetHandler
 } from './api/ships-api'
+import {
+  userCreateHandler,
+  userLoginHandler,
+} from './api/user-api'
 
 const basePath = '/api/1.0'
 
@@ -13,12 +19,55 @@ const shipListGetRoute = {
     description: 'Get list of ships',
     tags: ['api'],
     validate: {},
+    auth: { 
+      strategy: 'jwt',
+      access: [{
+        scope: ['admin']
+      }]
+    }
+  },
+}
+
+const userCreateRoute = {
+  method: 'POST',
+  path: basePath + '/users',
+  config: {
+    handler: userCreateHandler,
+    description: 'Create a user',
+    tags: ['api'],
+    validate: {
+      payload: Joi.object({
+        email: Joi.string().trim().email().required().description('Email address'),
+        password: Joi.string().trim().required().description('Password'),
+        admin: Joi.boolean().optional().description('Is user admin?')
+      })
+    },
+    auth: false
+  },
+}
+
+const userLoginRoute = {
+  method: 'POST',
+  path: basePath + '/login',
+  config: {
+    handler: userLoginHandler,
+    description: 'Login a user',
+    tags: ['api'],
+    validate: {
+      payload: Joi.object({
+        email: Joi.string().trim().email().required().description('Email address'),
+        password: Joi.string().trim().required().description('Password'),
+      })
+    },
+    auth: false
   },
 }
 
 export async function addRoutes(server) {
   const routes = [
     shipListGetRoute,
+    userCreateRoute,
+    userLoginRoute,
   ]
 
   for (const route of routes) {

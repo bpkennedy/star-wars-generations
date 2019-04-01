@@ -2,9 +2,9 @@ import {
   Model
 } from 'objection'
 
-export class Ship extends Model {
+export class User extends Model {
   static get tableName() {
-    return 'ships'
+    return 'users'
   }
   $beforeInsert() {
     this.created_at = new Date().toISOString();

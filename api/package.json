@@ -14,8 +14,8 @@
   },
   "scripts": {
     "serve": "nodemon --exec babel-node ./src/index.js",
-    "test": "NODE_ENV=development mocha --require @babel/register -w --recursive",
-    "test:ci": "NODE_ENV=production mocha --require @babel/register --exit"
+    "test": "NODE_ENV=development mocha --require @babel/register -w --recursive 'test/**/*.spec.js'",
+    "test:ci": "NODE_ENV=production mocha --require @babel/register 'test/**/*.spec.js' --exit"
   },
   "dependencies": {
     "@babel/cli": "^7.2.3",
@@ -25,10 +25,13 @@
     "@babel/preset-env": "^7.3.4",
     "@babel/register": "^7.0.0",
     "axios": "^0.18.0",
+    "bcrypt-nodejs": "0.0.3",
     "hapi": "^18.1.0",
+    "hapi-auth-jwt2": "^8.3.0",
     "hapi-swagger": "^9.4.1",
     "inert": "^5.1.2",
     "joi": "^14.3.1",
+    "jsonwebtoken": "^8.5.1",
     "knex": "^0.14.6",
     "knex-migrate": "^1.7.1",
     "loglevel": "^1.6.1",

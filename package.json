@@ -19,5 +19,6 @@
     "test:api": "npm run build:api && cd api && npm run test:ci && cd ..",
     "serve:api": "cd api && npm run serve",
     "start": "npm run build:client && npm run build:api && npm run serve:api"
-  }
+  },
+  "dependencies": {}
 }

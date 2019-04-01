@@ -13,6 +13,8 @@ module.exports = [
     base_range: null,
     base_shield_strength: 500,
     base_space_speed: null,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
   },
   {
     id: '3456',
@@ -28,6 +30,8 @@ module.exports = [
     base_range: 300,
     base_shield_strength: null,
     base_space_speed: null,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
   },
   {
     id: '4567',
@@ -43,6 +47,8 @@ module.exports = [
     base_range: null,
     base_shield_strength: null,
     base_space_speed: null,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
   },
   {
     id: '5678',
@@ -58,6 +64,8 @@ module.exports = [
     base_range: null,
     base_shield_strength: null,
     base_space_speed: null,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
   },
   {
     id: '1234',
@@ -73,6 +81,8 @@ module.exports = [
     base_range: null,
     base_shield_strength: null,
     base_space_speed: 1000,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
   },
   {
     id: '1234a',
@@ -88,6 +98,8 @@ module.exports = [
     base_range: null,
     base_shield_strength: null,
     base_space_speed: 1150,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
   },
   {
     id: '6789',
@@ -103,6 +115,8 @@ module.exports = [
     base_range: null,
     base_shield_strength: null,
     base_space_speed: null,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
   },
   {
     id: '7891',
@@ -118,6 +132,8 @@ module.exports = [
     base_range: null,
     base_shield_strength: null,
     base_space_speed: null,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
   },
   {
     id: '8912',
@@ -133,5 +149,7 @@ module.exports = [
     base_range: null,
     base_shield_strength: null,
     base_space_speed: null,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
   },
 ];

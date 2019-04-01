@@ -8,5 +8,7 @@ module.exports = [
     length: 16.74,
     width: 3.24,
     height: 18.12,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
   },
 ];

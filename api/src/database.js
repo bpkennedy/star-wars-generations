@@ -4,10 +4,12 @@ import Knex from 'knex'
 import knexMigrate from 'knex-migrate'
 import { Model } from 'objection'
 import { Ship } from './dao/ship-dao'
+import { User } from './dao/user-dao'
 let knex
 
 const dataModels = [
-  Ship
+  Ship,
+  User,
 ]
 
 export async function setup(host = 'db', port = 5432) {
