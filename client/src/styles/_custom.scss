@@ -1,6 +1,51 @@
 @import "../../node_modules/bootstrap/scss/functions";
 @import "../../node_modules/bootstrap/scss/variables";
 
+$base: #f6f1b1;
+$accent: #16a2dd;
+$white: #ffffff;
+$dark-gray: #3d3f3e;
+$light-gray: #e1e3e2;
+$danger: #de3435;
+$dark-danger: #852f30;
+$success: #0de564;
+$warning: #ffbb0e;
+
 $theme-colors: (
-  primary: $blue,
+  primary: $base,
+  secondary: $accent,
+  success: $success,
+  danger: $danger,
+  warning: $warning,
+  light: $light-gray,
+  dark: $dark-gray,
 );
+
+$enable-rounded: false;
+
+@font-face {
+  font-family: 'NewsGothicRegular';
+  src: url('./assets/fonts/NewsGothicRegular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Star Jedi';
+  src: url('./assets/fonts/Starjedi.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Univers';
+  src: url('./assets/fonts/UniversLTStd.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+$font-family-base: "NewsGothicRegular", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+$headings-font-family: "Univers";
+
+$navbar-padding-y: 0;
+$navbar-padding-x: 0;
