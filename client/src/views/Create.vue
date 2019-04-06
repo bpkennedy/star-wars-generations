@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid thin">
-    <h1 class="text-center">Login</h1>
+    <h1 class="text-center">Create Account</h1>
     <b-form @submit.prevent="onSubmit" @reset.prevent="onReset" novalidate>
       <b-form-group :invalid-feedback="errors.first('email')"
                     :state="!errors.has('email')"
@@ -15,6 +15,19 @@
                       type="email">
         </b-form-input>
       </b-form-group>
+      <b-form-group :invalid-feedback="errors.first('display')"
+                    :state="!errors.has('display')"
+                    label="Display name:"
+                    label-for="display">
+        <b-form-input id="display"
+                      v-model="form.display"
+                      v-validate="'required'"
+                      :state="errors.has('display') ? false : null"
+                      placeholder="Display name"
+                      name="display"
+                      type="text">
+        </b-form-input>
+      </b-form-group>
       <b-form-group :invalid-feedback="errors.first('password')"
                     :state="!errors.has('password')"
                     label="Password:"
@@ -25,6 +38,21 @@
                       :state="errors.has('password') ? false : null"
                       placeholder="Enter password"
                       name="password"
+                      type="password"
+                      ref="password">
+        </b-form-input>
+      </b-form-group>
+      <b-form-group :invalid-feedback="errors.first('confirmpassword')"
+                    :state="!errors.has('confirmpassword')"
+                    label="Confirm Password:"
+                    label-for="confirmpassword">
+        <b-form-input id="confirmpassword"
+                      v-model="form.confirmpassword"
+                      v-validate="'required|confirmed:password'"
+                      data-vv-as="password"
+                      :state="errors.has('confirmpassword') ? false : null"
+                      placeholder="Confirm password"
+                      name="confirmpassword"
                       type="password">
         </b-form-input>
       </b-form-group>
@@ -33,11 +61,8 @@
     </b-form>
     <b-container class="user-help-links">
       <b-row>
-        <b-col class="text-left no-left-pad">
-          <b-link to="/create" right>Create New Account</b-link>
-        </b-col>
         <b-col class="text-right no-right-pad">
-          <b-link to="/reset">Reset Password</b-link>
+          <b-link to="/login">Already a member? Log In</b-link>
         </b-col>
       </b-row>
     </b-container>
@@ -46,12 +71,14 @@
 
 <script>
 export default {
-  name: 'login',
+  name: 'create',
   data() {
     return {
       form: {
         email: undefined,
-        password: undefined
+        password: undefined,
+        display: undefined,
+        confirmpassword: undefined,
       },
     }
   },
@@ -65,6 +92,8 @@ export default {
     onReset(evt) {
       this.form.email = ''
       this.form.password = ''
+      this.form.confirmPass = ''
+      this.form.display = ''
     },
   }
 }

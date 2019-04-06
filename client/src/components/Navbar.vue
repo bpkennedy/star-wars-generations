@@ -17,12 +17,17 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
   .swg-logo {
     font-family: "Star Jedi", 'Roboto', Arial;
     letter-spacing: .1rem;
-    a {
+    padding-left: .5rem;
+    a.nav-link {
       color: #f6f1b1;
+      &:hover {
+        color: #f6f1b1;
+        cursor: pointer;
+      }
     }
   }
 </style>

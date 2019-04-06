@@ -27,15 +27,43 @@
 Cypress.Commands.add('login', (email, password) => {
   cy.contains('Email').click()
   if (email.length > 0) {
-    cy.focused().type(email) 
+    cy.focused().clear().type(email) 
   } else {
-    cy.focused().type(' ').clear()
+    cy.focused().clear().type(' ')
   }
   cy.contains('Password').click()
   if (password.length > 0) {
-    cy.focused().type(password) 
+    cy.focused().clear().type(password) 
   } else {
-    cy.focused().type(' ').clear()
+    cy.focused().clear().type(' ')
+  }
+  cy.contains('Submit').click()
+})
+
+Cypress.Commands.add('create', (email, display, password, confirmPass) => {
+  cy.contains('Email').click()
+  if (email.length > 0) {
+    cy.focused().clear().type(email)
+  } else {
+    cy.focused().clear().type(' ')
+  }
+  cy.contains('Display').click()
+  if (display.length > 0) {
+    cy.focused().clear().type(display)
+  } else {
+    cy.focused().clear().type(' ')
+  }
+  cy.contains('Password').eq(0).click()
+  if (password.length > 0) {
+    cy.focused().clear().type(password) 
+  } else {
+    cy.focused().clear().type(' ')
+  }
+  cy.contains('Confirm Password').click()
+  if (confirmPass.length > 0) {
+    cy.focused().clear().type(confirmPass)
+  } else {
+    cy.focused().clear().type(' ')
   }
   cy.contains('Submit').click()
 })

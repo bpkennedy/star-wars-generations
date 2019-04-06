@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid thin">
-    <h1 class="text-center">Login</h1>
+    <h1 class="text-center">Reset Password</h1>
     <b-form @submit.prevent="onSubmit" @reset.prevent="onReset" novalidate>
       <b-form-group :invalid-feedback="errors.first('email')"
                     :state="!errors.has('email')"
@@ -15,43 +15,19 @@
                       type="email">
         </b-form-input>
       </b-form-group>
-      <b-form-group :invalid-feedback="errors.first('password')"
-                    :state="!errors.has('password')"
-                    label="Password:"
-                    label-for="password">
-        <b-form-input id="password"
-                      v-model="form.password"
-                      v-validate="'required'"
-                      :state="errors.has('password') ? false : null"
-                      placeholder="Enter password"
-                      name="password"
-                      type="password">
-        </b-form-input>
-      </b-form-group>
       <b-button type="submit" variant="primary">Submit</b-button>
       <b-button type="reset" variant="default">Reset</b-button>
     </b-form>
-    <b-container class="user-help-links">
-      <b-row>
-        <b-col class="text-left no-left-pad">
-          <b-link to="/create" right>Create New Account</b-link>
-        </b-col>
-        <b-col class="text-right no-right-pad">
-          <b-link to="/reset">Reset Password</b-link>
-        </b-col>
-      </b-row>
-    </b-container>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'login',
+  name: 'reset',
   data() {
     return {
       form: {
         email: undefined,
-        password: undefined
       },
     }
   },
@@ -64,7 +40,6 @@ export default {
     },
     onReset(evt) {
       this.form.email = ''
-      this.form.password = ''
     },
   }
 }

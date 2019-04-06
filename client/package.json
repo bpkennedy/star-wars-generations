@@ -4,14 +4,6 @@
   "private": false,
   "description": "Client application for Star Wars Generations",
   "author": "Brian Kennedy <bpkennedy@gmail.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/bpkennedy/star-wars-generations"
-  },
-  "homepage": "https://github.com/bpkennedy/star-wars-generations#readme",
-  "engines": {
-    "node": "10.0.0"
-  },
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -30,7 +22,7 @@
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.5.0",
     "@vue/cli-plugin-e2e-cypress": "^3.5.0",
-    "@vue/cli-plugin-eslint": "^3.5.0",
+    "@vue/cli-plugin-eslint": "^3.5.1",
     "@vue/cli-service": "^3.5.0",
     "@vue/eslint-config-standard": "^4.0.0",
     "babel-eslint": "^10.0.1",
@@ -48,7 +40,8 @@
     },
     "extends": [
       "plugin:vue/essential",
-      "@vue/standard"
+      "@vue/standard",
+      "eslint:recommended"
     ],
     "rules": {},
     "parserOptions": {
@@ -64,5 +57,13 @@
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
-  ]
+  ],
+  "bugs": {
+    "url": "https://github.com/bpkennedy/star-wars-generations"
+  },
+  "engines": {
+    "node": "10.0.0"
+  },
+  "homepage": "https://github.com/bpkennedy/star-wars-generations#readme",
+  "license": "MIT"
 }
