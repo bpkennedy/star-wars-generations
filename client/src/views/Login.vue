@@ -1,33 +1,23 @@
 <template>
   <div class="container-fluid thin">
     <h1 class="text-center">Login</h1>
-    <b-form @submit.prevent="onSubmit" @reset.prevent="onReset" novalidate>
-      <b-form-group :invalid-feedback="errors.first('email')"
-                    :state="!errors.has('email')"
-                    label="Email address:"
-                    label-for="email">
-        <b-form-input id="email"
-                      v-model="form.email"
-                      v-validate="'required|email'"
-                      :state="errors.has('email') ? false : null"
-                      placeholder="Enter email"
-                      name="email"
-                      type="email">
-        </b-form-input>
-      </b-form-group>
-      <b-form-group :invalid-feedback="errors.first('password')"
-                    :state="!errors.has('password')"
-                    label="Password:"
-                    label-for="password">
-        <b-form-input id="password"
-                      v-model="form.password"
-                      v-validate="'required'"
-                      :state="errors.has('password') ? false : null"
-                      placeholder="Enter password"
-                      name="password"
-                      type="password">
-        </b-form-input>
-      </b-form-group>
+    <b-form @submit.prevent="onSubmit" @reset="onReset" novalidate>
+      <text-input name="email"
+                  type="email"
+                  label="Email address"
+                  :validation="'required|email'"
+                  placeholder="Enter email"
+                  v-model="form.email"
+                  ref="email"
+      ></text-input>
+      <text-input name="password"
+                  type="password"
+                  label="Password"
+                  :validation="'required'"
+                  placeholder="Enter password"
+                  v-model="form.password"
+                  ref="password"
+      ></text-input>
       <b-button type="submit" variant="primary">Submit</b-button>
       <b-button type="reset" variant="default">Reset</b-button>
     </b-form>
@@ -45,8 +35,13 @@
 </template>
 
 <script>
+import TextInput from "../components/TextInput.vue"
+
 export default {
   name: 'login',
+  components: {
+    TextInput,
+  },
   data() {
     return {
       form: {
@@ -57,14 +52,14 @@ export default {
   },
   methods: {
     async onSubmit(evt) {
-      await this.$validator.validateAll()
+      this.$validator.validateAll()
       if (!this.errors.any()) {
         alert(JSON.stringify(this.form)) 
       }
     },
     onReset(evt) {
-      this.form.email = ''
-      this.form.password = ''
+      this.$set(this.form, 'email', '')
+      this.$set(this.form, 'password', '')
     },
   }
 }

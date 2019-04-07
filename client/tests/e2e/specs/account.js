@@ -41,14 +41,15 @@ describe('Account', () => {
     cy.create('test@email.com', 'Buddy Lee', 'somePassword', '')
     cy.contains('The email field is required.').should('not.exist')
     cy.contains('The display field is required.').should('not.exist')
-    cy.contains('The password field is required.').should('exist')
+    cy.contains('The password field is required.').should('not.exist')
+    cy.contains('The confirmpassword field is required.').should('exist')
     cy.contains('Reset').click()
     
     cy.create('test@email.com', 'Buddy Lee', 'somePassword', 'notMatchPass')
     cy.contains('The email field is required.').should('not.exist')
     cy.contains('The display field is required.').should('not.exist')
     cy.contains('The password field is required.').should('not.exist')
-    cy.contains('The password confirmation does not match.').should('exist')
+    cy.contains('The confirmpassword confirmation does not match.').should('exist')
     cy.contains('Reset').click()
   })
   

@@ -22,12 +22,16 @@ describe('Login', () => {
     cy.contains('The email field is required.').should('exist')
     cy.contains('The password field is required.').should('not.exist')
     cy.contains('Reset').click()
+    
     cy.login('test@email.com', '')
     cy.contains('The email field is required.').should('not.exist')
     cy.contains('The password field is required.').should('exist')
+    cy.contains('Reset').click()
+    
     cy.login('', '')
     cy.contains('The email field is required.').should('exist')
     cy.contains('The password field is required.').should('exist')
+    cy.contains('Reset').click()
   })
   
   it('should go to Create Account if click on the link', () => {

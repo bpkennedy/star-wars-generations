@@ -29,13 +29,14 @@ Cypress.Commands.add('login', (email, password) => {
   if (email.length > 0) {
     cy.focused().clear().type(email) 
   } else {
-    cy.focused().clear().type(' ')
+    // kinda hacky way to simulate a user leaving this field empty
+    cy.focused().type('toBeCleared').clear()
   }
   cy.contains('Password').click()
   if (password.length > 0) {
     cy.focused().clear().type(password) 
   } else {
-    cy.focused().clear().type(' ')
+    cy.focused().type('toBeCleared').clear()
   }
   cy.contains('Submit').click()
 })
@@ -45,25 +46,25 @@ Cypress.Commands.add('create', (email, display, password, confirmPass) => {
   if (email.length > 0) {
     cy.focused().clear().type(email)
   } else {
-    cy.focused().clear().type(' ')
+    cy.focused().type('toBeCleared').clear()
   }
   cy.contains('Display').click()
   if (display.length > 0) {
     cy.focused().clear().type(display)
   } else {
-    cy.focused().clear().type(' ')
+    cy.focused().type('toBeCleared').clear()
   }
   cy.contains('Password').eq(0).click()
   if (password.length > 0) {
     cy.focused().clear().type(password) 
   } else {
-    cy.focused().clear().type(' ')
+    cy.focused().type('toBeCleared').clear()
   }
   cy.contains('Confirm Password').click()
   if (confirmPass.length > 0) {
     cy.focused().clear().type(confirmPass)
   } else {
-    cy.focused().clear().type(' ')
+    cy.focused().type('toBeCleared').clear()
   }
   cy.contains('Submit').click()
 })
