@@ -24,7 +24,11 @@ const shipListGetRoute = {
       access: [{
         scope: ['admin']
       }]
-    }
+    },
+    cors: {
+      origin: ['*'],
+      additionalHeaders: ['cache-control', 'x-requested-with']
+    },
   },
 }
 
@@ -42,7 +46,11 @@ const userCreateRoute = {
         admin: Joi.boolean().optional().description('Is user admin?')
       })
     },
-    auth: false
+    auth: false,
+    cors: {
+      origin: ['*'],
+      additionalHeaders: ['cache-control', 'x-requested-with']
+    },
   },
 }
 
@@ -59,7 +67,11 @@ const userLoginRoute = {
         password: Joi.string().trim().required().description('Password'),
       })
     },
-    auth: false
+    auth: false,
+    cors: {
+      origin: ['*'],
+      additionalHeaders: ['cache-control', 'x-requested-with']
+    },
   },
 }
 

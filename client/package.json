@@ -8,10 +8,11 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "test:e2e": "vue-cli-service test:e2e",
+    "test:e2e": "NODE_ENV=development vue-cli-service test:e2e",
     "test:e2e:ci": "vue-cli-service test:e2e --headless"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
     "bootstrap-vue": "^2.0.0-rc.16",
     "vee-validate": "^2.2.0",
