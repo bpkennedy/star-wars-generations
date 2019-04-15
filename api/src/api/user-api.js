@@ -5,6 +5,7 @@ export async function userCreateHandler(request, h) {
   try {
     const newUser = await User.query().insert({
       username: request.payload.email,
+      display_name: request.payload.displayName,
       password: Helper.hashPassword(request.payload.password),
       admin: request.payload.admin,
     });
@@ -12,7 +13,10 @@ export async function userCreateHandler(request, h) {
     return h.response({token}).code(201)
   } catch(error) {
     if (error.routine === '_bt_check_unique') {
-      return h.response({error: 'User with that EMAIL already exist'}).code(400)
+      return h.response({
+        code: error.constraint === 'users_username_unique' ? 1 : 2,
+        error: error.constraint === 'users_username_unique' ? 'Email is taken' : 'Display Name is taken'
+      }).code(400)
     }
     return h.response({error}).code(400)
   }

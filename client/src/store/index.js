@@ -13,7 +13,11 @@ const mutations = {}
 
 export const actions = {
   async [CREATE_USER_ACTION]({state, commit, dispatch}, userData) {
-    await api.post('users', userData)
+    try {
+      return await api.post('users', userData)
+    } catch(error) {
+      throw error.response.data
+    }
   },
 }
 

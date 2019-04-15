@@ -163,6 +163,7 @@ const seedShips = [{
 const seedUsers = [{
   id: '12345',
   username: 'bpkennedy@gmail.com',
+  displayName: 'Brian',
   password: 'pass123!',
   admin: true,
 }]
@@ -224,6 +225,7 @@ module.exports = {
       for (const user of seedUsers) {
         await knex('users').insert({
           username: user.username,
+          display_name: user.displayName,
           password: user.password,
           admin: user.admin,
           created_at: new Date().toISOString(),

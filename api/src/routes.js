@@ -42,6 +42,7 @@ const userCreateRoute = {
     validate: {
       payload: Joi.object({
         email: Joi.string().trim().email().required().description('Email address'),
+        displayName: Joi.string().trim().required().description('Display name'),
         password: Joi.string().trim().required().description('Password'),
         admin: Joi.boolean().optional().description('Is user admin?')
       })
